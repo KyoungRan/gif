@@ -1,10 +1,7 @@
 import React, {Component} from "react";
 //import logo from "./logo.svg"
 import logo from "./images/sloing_gif.gif";
-import "./App.css";
 import FileUpload from "./FileUpload";
-import FilePreview from "./FilePreview";
-
 import styled from "styled-components";
 
 const AppContainer = styled.div`
@@ -59,9 +56,9 @@ const Logo = styled.img`
   width: 150px;
 `;
 
-const ImgPreview = styled.img`
-  width: 100px;
-`;
+//const ImgPreview = styled.img`
+//  width: 100px;
+//`;
 
 const uploadFileToServer = file => {
   const delay = file.size / 100;

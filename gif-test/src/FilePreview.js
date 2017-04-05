@@ -1,6 +1,27 @@
 import React, {Component} from "react";
 import FileUpload from "./FileUpload";
 
+const uploadFileToServer = file => {
+  const delay = file.size / 100;
+  return new Promise((resolve, reject) => {
+    setTimeout(
+      () => {
+        resolve();
+      },
+      delay
+    );
+  });
+};
+
+const getExtFromType = type => {
+  const parts = type.split("/");
+  return parts[parts.length - 1];
+};
+const getExtFromName = name => {
+  const parts = name.split(".");
+  return parts[parts.length - 1];
+};
+
 const Loader = () => {
   return (
     <div className="loader">
@@ -12,19 +33,18 @@ const Loader = () => {
 };
 
 class FilePreview extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       loading: true
     };
   }
 
-  getDefaultPreops() {
+  getDefaultProps() {
     return {
       onRemove: () => {}
     };
   }
-
   componentWillMount() {
     this.loadData();
   }
@@ -88,12 +108,13 @@ class FilePreview extends Component {
         } else if (this.state.type === "image") {
           <img alt="preview" src={this.state.src} className="image-preview" />;
         } else {
-          <pre className="preview"> no preview </pre>;
+          <pre className="preview">no preview</pre>;
         }
-      } else
+      } else {
         null;
+      }
     };
-    const classes = ["preview-itme", this.preops.data.loading ? "disabled" : ""]
+    const classes = ["preview-item", this.props.data.loading ? "disabled" : ""]
       .join(" ")
       .trim();
 
@@ -102,12 +123,12 @@ class FilePreview extends Component {
         {uploading}
         {loading}
         {preview}
-        <div className="file-name-stretch">
-          {this.props.data.name}
-        </div>
-        <button className="button" onClick={this.props.onRemove}>Remove</button>
+        <div className="file-name pacer">{this.props.data.name}</div>
+        <button className="button" onClick={this.props.onRemove}>
+          remove
+        </button>
         <button className="button" onClick={this.props.onUpload}>
-          Upload
+          upload
         </button>
       </div>
     );

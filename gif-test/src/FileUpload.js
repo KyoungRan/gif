@@ -7,7 +7,7 @@ const getExtFromType = type => {
   return parts[parts.length - 1];
 };
 const getExtFromName = name => {
-  const parts = name.aplit(".");
+  const parts = name.split(".");
   return parts[parts.length - 1];
 };
 
@@ -24,7 +24,6 @@ class FileUpload extends Component {
       e.stopPropagation();
       e.preventDefault();
     }
-
     const hoverState = () => {
       if (e.type === "dragover") {
         ("hover");
@@ -36,7 +35,6 @@ class FileUpload extends Component {
       hoverState
     });
   }
-
   handleFileSelect(e) {
     this.handleDragOver(e);
     const files = e.target.files || e.dataTransfer.files;
@@ -46,20 +44,18 @@ class FileUpload extends Component {
     });
   }
 
-  removeIten(index) {
+  removeItem(index) {
     const fileList = this.state.fileList;
     fileList.splice(index, 1);
     this.setState({
       fileList
     });
   }
-
   removeFile(file) {
     const fileList = this.state.fileList;
     const index = fileList.indexOf(file);
     this.removeItem(index);
   }
-
   uploadFile(file) {
     return new Promise((resolve, reject) => {
       const fileList = this.state.fileList;
@@ -85,7 +81,6 @@ class FileUpload extends Component {
           this.removeFile(file);
         });
       };
-
       return (
         <FilePreview
           key={index}
@@ -96,7 +91,6 @@ class FileUpload extends Component {
       );
     });
   }
-
   uploadFiles() {
     this.state.fileList.forEach(file => {
       this.uploadFile(file).then(() => {
@@ -104,7 +98,6 @@ class FileUpload extends Component {
       });
     });
   }
-
   selectFile(e) {
     e.preventDefault();
     this.input.click(e);
@@ -135,7 +128,7 @@ class FileUpload extends Component {
       if (this.state.fileList.length > 1) {
         `${this.state.fileList.length} Files`;
       } else if (this.state.fileList.length === 1) {
-        this.state.fileList[0].name.replae(fileExt, "");
+        this.state.fileList[0].name.replace(fileExt, "");
       } else {
         ("No file chosen");
       }
@@ -143,14 +136,14 @@ class FileUpload extends Component {
 
     return (
       <div>
-        <input type="hidden" name={`${name}: maxSize`} value={maxSize} />
+        <input type="hidden" name={`${name}:maxSize`} value={maxSize} />
         <div>
           <label>
             <span>{label}</span>
             <div
               className={dragClasses}
               onDragOver={this.handleDragOver}
-              onDrageLeave={this.handleDragOver}
+              onDragLeave={this.handleDragOver}
               onDrop={this.handleFileSelect}
             >
               <div className="input-wrapper">
@@ -175,11 +168,11 @@ class FileUpload extends Component {
                   {extTail}
                 </div>
               </div>
-              <span className="help-text">Or drip files here </span>
+              <span className="help-text">or drop files here</span>
             </div>
           </label>
           <button className="button" type="button" onClick={this.uploadFiles}>
-            Upload All{" "}
+            Upload All
           </button>
           <div className="previews">{this.previews()}</div>
         </div>

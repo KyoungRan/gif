@@ -1,5 +1,5 @@
 {
-  "name": "gif-test",
+  "name": "gifTest",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -7,7 +7,8 @@
     "react-dom": "^15.4.2"
   },
   "devDependencies": {
-    "react-scripts": "0.9.5"
+    "react-scripts": "0.9.5",
+    "styled-components": "^1.4.4"
   },
   "scripts": {
     "start": "react-scripts start",
