@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 
 import FileUpload from "./FileUpload";
+import VideoToGif from "./VideoToGif";
 
 class App extends Component {
   render() {
@@ -10,9 +11,10 @@ class App extends Component {
           multiple={true}
           name="example-upload"
           maxSize={300000}
-          label="Upload Files"
+          label="Create GIF from Image Files"
           accept="image/jpeg, image/png, image/gif"
         />
+        <VideoToGif />
       </div>
     );
   }
