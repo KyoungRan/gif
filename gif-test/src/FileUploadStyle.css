@@ -196,3 +196,18 @@ body {
 .spacer {
   flex: 1;
 }
+/*****************
+**** Custom Css
+******************/
+.gif-container {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.image-gif-preview {
+  display: inline-block;
+  width: 300px;
+  margin: 2px;
+  padding: 5px;
+}

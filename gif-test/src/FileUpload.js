@@ -119,9 +119,18 @@ class FileUpload extends Component {
       function(obj) {
         if (!obj.error) {
           const image = obj.image,
-            animatedImage = document.createElement("img");
-          animatedImage.src = image;
-          document.body.appendChild(animatedImage);
+            //animatedImage = document.createElement("img");
+            //animatedImage.src = image;
+            /*const imageGifPreview = () => (
+            <img
+              alt="image gif preview"
+              src={image}
+              className="image-gif-preview"
+            />
+          );*/
+            gifResult = document.getElementById("result");
+          gifResult.src = image;
+          //document.body.appendChild(animatedImage);
         }
       }
     );
@@ -157,7 +166,7 @@ class FileUpload extends Component {
   }
 
   render() {
-    const {maxSize, name, multiple, label} = this.props;
+    const {maxSize, name, multiple, label, accept} = this.props;
     const dragClasses = ["file-drag", this.state.hoverState].join(" ").trim();
     // const fileExt = this.state.fileList.length === 1
     //   ? this.state.fileList[0].type
@@ -193,7 +202,7 @@ class FileUpload extends Component {
                   name={name}
                   multiple={multiple}
                   onChange={this.handleFileSelect}
-                  accept="image/jpeg, image/png, image/gif"
+                  accept={accept}
                 />
                 <div className="input-cover">
                   <button
@@ -210,6 +219,16 @@ class FileUpload extends Component {
               <span className="help-text">or drop files here</span>
             </div>
           </label>
+          <div className="previews">{this.previews()}</div>
+          <br />
+          {/*<button
+            className="button"
+            type="button"
+            id="reset"
+            onClick={this.clickReset}
+          >
+            Reset
+          </button>*/}
           <button
             className="button"
             type="button"
@@ -219,9 +238,9 @@ class FileUpload extends Component {
             Create GIF
           </button>
           <br />
-          <div className="previews">{this.previews()}</div>
-          <br />
-          <img id="result" src="http://placehold.it/200x200" />
+          <div className="gif-container">
+            <img id="result" className="image-gif-preview" />
+          </div>
         </div>
       </div>
     );

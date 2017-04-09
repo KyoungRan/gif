@@ -11,6 +11,7 @@ class App extends Component {
           name="example-upload"
           maxSize={300000}
           label="Upload Files"
+          accept="image/jpeg, image/png, image/gif"
         />
       </div>
     );
