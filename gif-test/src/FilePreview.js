@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import gifshot from "../demo/js/dependencies/gifshot";
 
 /*const uploadFileToServer = file => {
   const delay = file.size / 100;
@@ -81,7 +82,12 @@ class FilePreview extends Component {
     const uploading = this.props.data.loading ? <Loader /> : null;
     const preview = !this.state.loading && !this.props.data.loading
       ? this.state.type === "image"
-          ? <img alt="preview" src={this.state.src} className="image-preview" />
+          ? <img
+              alt="preview"
+              src={this.state.src}
+              className="image-preview"
+              id={`fileUploaded${this.props.i}`}
+            />
           : <pre className="preview">no preview</pre>
       : null;
     const classes = ["preview-item", this.props.data.loading ? "disabled" : ""]
