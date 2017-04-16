@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 
 import gifshot from "../demo/js/dependencies/gifshot";
 
@@ -8,12 +8,8 @@ class VideoToGif extends Component {
     this.state = {
       videoUrl: ""
     };
-    this.createVideoToGif = this
-      .createVideoToGif
-      .bind(this);
-    this.handleChange = this
-      .handleChange
-      .bind(this);
+    this.createVideoToGif = this.createVideoToGif.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   createVideoToGif(e) {
@@ -36,14 +32,14 @@ class VideoToGif extends Component {
   }
 
   handleChange(e) {
-    this.setState({videoUrl: e.target.value});
+    this.setState({ videoUrl: e.target.value });
   }
 
   render() {
     return (
       <div>
-        <br/>
-        <hr/>
+        <br />
+        <hr />
         <form onSubmit={this.createVideoToGif}>
           <p>
             Youtube Video URL을 입력하세요.
@@ -54,15 +50,15 @@ class VideoToGif extends Component {
             placeholder="Youtube Video URL"
             value={this.state.videoUrl}
             onChange={this.handleChange}
-            required/> {/*<button className="button" type="submit" value="Submit">Submit</button>*/}
-          <br/><br/>
+            required /> {/*<button className="button" type="submit" value="Submit">Submit</button>*/}
+          <br /><br />
           <button className="button" type="submit">
             Create GIF
           </button>
-          <br/>
+          <br />
         </form>
         <div className="gif-container">
-          <img id="video-result" className="image-gif-preview"/>
+          <img id="video-result" className="image-gif-preview" />
         </div>
       </div>
     );
